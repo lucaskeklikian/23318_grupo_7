@@ -13,11 +13,16 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
 </head>
-<body>
+<body data-bs-theme="dark">
     <h1>Agregar Persona</h1>
     <form method="POST">
         <table>{{formaPersona}}</table>
-        <button type="submit">Enviar</button>
+        <div class="d-inline-flex p-2">
+            <a href= "{% url 'inicio' %}" type="button" class="btn btn-outline-primary">Regresar al inicio</a>
+        </div>
+        <div class="d-inline-flex p-3">
+            <button type="submit" class="btn btn-outline-primary">Enviar</button>
+        </div> 
         {% csrf_token %}
     </form>
 </body>

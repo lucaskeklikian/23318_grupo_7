@@ -13,7 +13,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
 </head>
-<body>
+<body data-bs-theme="dark">
 <h1>Detalle de la Persona</h1>
 <div class="list-group">
           
@@ -22,6 +22,8 @@
     <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Nombre:</strong> {{persona.nombre}}</li>
     <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Apellido:</strong> {{persona.apellido}}</li>
     <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Email:</strong> {{persona.email}}</li>
+    <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Fecha:</strong> {{persona.fecha|date:"d/m/Y"}}</li>
+    <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Hora:</strong> {{persona.hora}}</li>
 </ul>
 
 </div>

@@ -15,14 +15,19 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <h1>Editar Persona</h1>
     <form method="POST">
-        <table>{{formaPersona}}</table>
-        <button type="submit">Enviar</button>
         {% csrf_token %}
+        <table>{{formaPersona}}</table>
+        <div class="d-inline-flex p-2">
+            <a href= "{% url 'inicio' %}" type="button" class="btn btn-outline-primary">Regresar al inicio</a>
+        </div>
+        <div class="d-inline-flex p-3">
+            <button type="submit" class="btn btn-outline-primary">Enviar</button>
+        </div>     
     </form>
-
+   
 </body>
 
 </html>

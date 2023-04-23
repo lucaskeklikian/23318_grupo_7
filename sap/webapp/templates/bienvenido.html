@@ -15,10 +15,11 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <h1>Sistema de Administración de Personas (SAP)</h1>
-    <div>
-        <h5>Número de personas: {{no_personas}}</h5>
+    <h5>Número de personas: {{no_personas}}</h5>
+    <div class="d-inline-flex p-2">
+        <td><a href="calendar/" target="_blank" rel="noopener noreferrer" type="button" class="btn btn-outline-primary">Calendario</a></td>
     </div>
     <br>
     <div>
@@ -28,6 +29,8 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Email</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                     <th>Ver</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
@@ -40,6 +43,8 @@
                     <td>{{persona.id}}</td>
                     <td>{{persona.nombre}} {{persona.apellido}} </td>
                     <td>{{persona.email}}</td>
+                    <td>{{persona.fecha|date:"d/m/Y"}}</td>
+                    <td>{{persona.hora|time:'G:H'}}<span> hs</span></td>
                     <td><a href="detalle_persona/{{persona.id}}" type="button" class="btn btn-primary">Ver</a></td>
                     <td><a href="editar_persona/{{persona.id}}" type="button" class="btn btn-success">Editar</a></td>
                     <td><a href="eliminar_persona/{{persona.id}}" type="button" class="btn btn-danger">Eliminar</a></td>
