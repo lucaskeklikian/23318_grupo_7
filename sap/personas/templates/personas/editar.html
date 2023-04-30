@@ -15,7 +15,8 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body data-bs-theme="dark">
+<body class="container-fluid" data-bs-theme="dark">
+{% if user.is_authenticated %}
     <h1>Editar Persona</h1>
     <form method="POST">
         {% csrf_token %}
@@ -27,7 +28,11 @@
             <button type="submit" class="btn btn-outline-primary">Enviar</button>
         </div>     
     </form>
-   
+{% else %}
+<h1>Debe Loguearse para ver esta pagina</h1>
+<div><a href="{% url 'login' %}">Login</a></div>
+
+{% endif %}     
 </body>
 
 </html>

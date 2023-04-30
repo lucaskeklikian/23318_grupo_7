@@ -15,8 +15,27 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body data-bs-theme="dark">
+<body class="container-fluid" data-bs-theme="dark">
+{% if messages %}
+{% for message in messages  %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>{{ message }}</strong>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% if user.is_authenticated %}
     <h1>Sistema de Administración de Personas (SAP)</h1>
+    
+
+    {% if user.is_authenticated %}
+        <div><a href="{% url 'logout' %}">Logout</a></div>
+    {% else %}
+   
+        <div><a href="{% url 'login' %}">Login</a></div>
+    
+    {% endif %}
+
     <h5>Número de personas: {{no_personas}}</h5>
     <div class="d-inline-flex p-2">
         <td><a href="calendar/" target="_blank" rel="noopener noreferrer" type="button" class="btn btn-outline-primary">Calendario</a></td>
@@ -58,6 +77,12 @@
     <div class="d-inline-flex p-2">
         <a href="nueva_persona" type="button" class="btn btn-outline-primary">Agregar Persona</a>
     </div>
+    
+    {% else %}
+    <h1>Debe Loguearse para ver esta página</h1>
+    <div><a href="{% url 'login' %}">Login</a></div>
+
+{% endif %}
 </body>
 
 </html>
