@@ -23,7 +23,7 @@
             }
     </style>
 </head>
-<body class="container-fluid" data-bs-theme="dark">           
+<body data-bs-theme="dark">           
         {% if messages %}
             {% for message in messages  %}
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -64,7 +64,7 @@
                     {% csrf_token %}
                     <div class="form-outline form-white mb-4">
                       <input type="text" name="username" class="form-control form-control-lg" />
-                      <label class="form-label" for="typeEmailX">Username</label>
+                      <label class="form-label" for="typeEmailX">Usuario</label>
                     </div>
       
                     <div class="form-outline form-white mb-4">
