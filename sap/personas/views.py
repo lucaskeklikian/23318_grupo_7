@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from personas.models import Persona
 from django.forms import modelform_factory
+from django.core.exceptions import ValidationError
+from django.contrib import messages
+
 
 from personas.forms import PersonaForm
 # Create your views here.
@@ -16,8 +19,12 @@ def nuevaPersona(request):
     if request.method =='POST':
         formaPersona = PersonaForm(request.POST)
         if formaPersona.is_valid:
-            formaPersona.save()
-            return redirect('inicio')
+            try:
+                formaPersona.save()
+                return redirect('inicio')
+            except:
+                messages.success(request,("Fecha y hora ocupada"))
+                
     else: # es GET
         formaPersona = PersonaForm()
 
@@ -28,8 +35,11 @@ def editarPersona(request, id):
     if request.method =='POST':
         formaPersona = PersonaForm(request.POST,instance= persona)
         if formaPersona.is_valid:
-            formaPersona.save()
-            return redirect('inicio')
+            try:
+                formaPersona.save()
+                return redirect('inicio')
+            except:
+                messages.success(request,("Fecha y hora ocupada"))
     else: # es GET
         formaPersona = PersonaForm(instance = persona)
 

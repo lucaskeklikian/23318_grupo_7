@@ -28,22 +28,31 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
           //initialDate: '2023-03-07',
-          locale: 'es',
+          
           headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
           },
+          buttonText:{
+            today:    'Hoy',
+            month:    'Mes',
+            week:     'Semana',
+            day:      'Dia',
+            list:     'Agenda'
+          },
+          titleFormat:{ year: 'numeric', month: 'long' },
+          locale: 'es',
           events: [
             {% for persona in object_list %}
 
-            {
-              title: "{{persona.nombre}} {{persona.apellido}}",
-              start: "{{persona.fecha|date:'Y-m-d'}}T{{persona.hora|time:'H:i:s'}}",
-              end: "{{persona.fecha|date:'Y-m-d'}}",
-              backgroundColor:'rgb(182,197,157)',
-              textColor : 'black'
-            },
+              {
+                title:"{{persona.nombre}} {{persona.apellido}}",
+                start:"{{persona.fecha_y_hora|date:'Y-m-d'}}T{{persona.fecha_y_hora|time:'H:i:s'}}",
+                end:"{{persona.fecha_y_hora|date:'Y-m-d'}}T{{persona.fecha_y_hora|time:'H:i:s'}}",
+                backgroundColor: 'cyan',
+                textColor : 'blue'
+              },
             
             {% endfor %}
             

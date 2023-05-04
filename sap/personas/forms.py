@@ -1,4 +1,4 @@
-from django.forms import EmailInput, ModelForm, DateInput, TimeInput, TextInput, Select,ChoiceField
+from django.forms import EmailInput, ModelForm, DateInput, TimeInput, TextInput, Select,ChoiceField, DateTimeInput
 from personas.models import Persona, Domicilio
 
 
@@ -10,7 +10,8 @@ class PersonaForm(ModelForm):
             'nombre': TextInput(attrs={'type':'text','class':'form-control'}),
             'apellido': TextInput(attrs={'type':'text','class':'form-control'}),
             'email': EmailInput(attrs={'type':'email','class':'form-control'}),
-            'fecha': DateInput(attrs={'type': 'date','class':'form-control'}),
-            'hora' : TimeInput(attrs={'type':'time','class':'form-control'}),
+            # 'fecha': DateInput(attrs={'type': 'date','class':'form-control'}),
+            # 'hora' : TimeInput(attrs={'type':'time','class':'form-control'}),
+            'fecha_y_hora': DateTimeInput(attrs={'type':'datetime-local'}),
             'domicilio': Select(attrs={'type':'select','class':'form-select'}), 
         }

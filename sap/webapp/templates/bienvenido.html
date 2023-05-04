@@ -62,8 +62,8 @@
                     <td>{{persona.id}}</td>
                     <td>{{persona.nombre}} {{persona.apellido}} </td>
                     <td>{{persona.email}}</td>
-                    <td>{{persona.fecha|date:"d/m/Y"}}</td>
-                    <td>{{persona.hora|time:'H:i'}}<span> hs</span></td>
+                    <td>{{persona.fecha_y_hora|date:'d-m-Y'}}</td>
+                    <td>{{persona.fecha_y_hora|time:'H:i'}}<span> hs</span></td>
                     <td><a href="detalle_persona/{{persona.id}}" type="button" class="btn btn-primary">Ver</a></td>
                     <td><a href="editar_persona/{{persona.id}}" type="button" class="btn btn-success">Editar</a></td>
                     <td><a href="eliminar_persona/{{persona.id}}" type="button" class="btn btn-danger">Eliminar</a></td>

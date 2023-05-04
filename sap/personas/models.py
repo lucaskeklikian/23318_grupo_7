@@ -14,8 +14,9 @@ class Persona(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
-    fecha = models.DateField(null=True, blank=True)
-    hora = models.TimeField(null=True, blank=True)
+    # fecha = models.DateField(null=True, blank=True)
+    # hora = models.TimeField(null=True, blank=True)
+    fecha_y_hora = models.DateTimeField(null=True,blank=True,unique=True,error_messages={"unique":"Fecha y hora ocupada"})
     domicilio = models.ForeignKey(Domicilio, on_delete=models.SET_NULL, null=True)
    
     def __str__(self):
