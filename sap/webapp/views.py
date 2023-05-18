@@ -9,7 +9,7 @@ from personas.models import Persona
 def bienvenido(request):
     no_personas_var= Persona.objects.count()
     #personas = Persona.objects.all()
-    personas = Persona.objects.order_by('id')
+    personas = Persona.objects.order_by('apellido')
     return render(request, "bienvenido.html", {"no_personas": no_personas_var,'personas': personas})
 
 class calendarView(ListView):
