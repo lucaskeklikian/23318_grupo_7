@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Create all your models here.
 
 class Domicilio(models.Model):
     calle = models.CharField(max_length=255)
