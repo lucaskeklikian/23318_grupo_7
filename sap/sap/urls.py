@@ -17,17 +17,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from webapp.views import bienvenido, calendarView
-from personas.views import detallePersona, nuevaPersona, editarPersona, eliminarPersona
+from webapp.views import bienvenido, calendarView, lista_pacientes, lista_medicos
+from personas.views import detalleTurno, nuevoTurno, nuevoPaciente, nuevoMedico, editarTurno, editarPaciente, editarMedico, eliminarTurno, eliminarPaciente, eliminarMedico
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bienvenido',bienvenido, name='inicio'),
-    path('detalle_persona/<int:id>',detallePersona),
-    path('nueva_persona', nuevaPersona),
-    path('editar_persona/<int:id>', editarPersona),
-    path('eliminar_persona/<int:id>', eliminarPersona),
+    path('lista_pacientes',lista_pacientes, name='lista_pacientes'),
+    path('lista_medicos',lista_medicos, name='lista_medicos'),
+    path('nuevo_paciente', nuevoPaciente,name='nuevo_paciente'),
+    path('nuevo_medico', nuevoMedico,name='nuevo_medico'),
+    path('nuevo_turno', nuevoTurno, name='nuevo_turno'),
+    path('editar_paciente/<int:id>', editarPaciente),
+    path('editar_medico/<int:id>', editarMedico),
+    path('editar_turno/<int:id>', editarTurno),
+    path('detalle_turno/<int:id>', detalleTurno),
+    path('eliminar_turno/<int:id>', eliminarTurno),
+    path('eliminar_paciente/<int:id>', eliminarPaciente),
+    path('eliminar_medico/<int:id>', eliminarMedico),
     path('calendar/', calendarView.as_view(),name='calendar'),
     path('members/', include('django.contrib.auth.urls')),
     path('', include('members.urls'))

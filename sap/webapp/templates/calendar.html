@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Sistema de Administración de Personas</title>
+    <title>Sistema de Administración de Turnos</title>
     
     <link rel="shortcut icon" href="{% static 'images/favicon5.png' %}" type="image/x-icon">
 
@@ -44,12 +44,12 @@
           titleFormat:{ year: 'numeric', month: 'long' },
           locale: 'es',
           events: [
-            {% for persona in object_list %}
+            {% for turno in object_list %}
 
               {
-                title:"{{persona.nombre}} {{persona.apellido}}",
-                start:"{{persona.fecha_y_hora|date:'Y-m-d'}}T{{persona.fecha_y_hora|time:'H:i:s'}}",
-                end:"{{persona.fecha_y_hora|date:'Y-m-d'}}T{{persona.fecha_y_hora|time:'H:i:s'}}",
+                title:"{{turno.paciente}}",
+                start:"{{turno.fecha_y_hora|date:'Y-m-d'}}T{{turno.fecha_y_hora|time:'H:i:s'}}",
+                end:"{{turno.fecha_y_hora|date:'Y-m-d'}}T{{turno.fecha_y_hora|time:'H:i:s'}}",
                 backgroundColor: 'cyan',
                 textColor : 'blue'
               },
