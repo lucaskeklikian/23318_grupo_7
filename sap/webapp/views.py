@@ -5,10 +5,10 @@ from personas.models import Turno, Paciente, Medico
 
 # Create your views here.
 
-def bienvenido(request):
+def lista_turnos(request):
     nro_turnos= Turno.objects.count()
     turnos = Turno.objects.order_by('fecha_y_hora')
-    return render(request, "bienvenido.html", {"nro_turnos": nro_turnos,'turnos' : turnos})
+    return render(request, "lista_turnos.html", {"nro_turnos": nro_turnos,'turnos' : turnos})
 
 def lista_pacientes(request):
     pacientes = Paciente.objects.order_by('apellido')
