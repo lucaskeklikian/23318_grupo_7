@@ -140,8 +140,13 @@ STATIC_URL = "static/"
 
 STATIC_ROOT= path.join(BASE_DIR,'static/')
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATICFILES_FINDERS = ["compressor.finders.CompressorFinder"]
+#STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATICFILES_FINDERS = ['compressor.finders.CompressorFinder',
+                       'django.contrib.staticfiles.finders.FileSystemFinder',
+                        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                    ]
+
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )

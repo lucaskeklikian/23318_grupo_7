@@ -70,17 +70,7 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-
     <h1>Sistema de Administración de Turnos</h1>
-
-
-{% if user.is_authenticated %}
-    <div><a href="{% url 'logout' %}">Logout</a></div><br>
-{% else %}
-
-    <div><a href="{% url 'login' %}">Login</a></div>
-
-{% endif %}
 
 <h5>Cantidad de turnos: {{nro_turnos}}</h5>
 
