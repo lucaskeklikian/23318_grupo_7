@@ -1,0 +1,114 @@
+{% extends 'base_webapp.html' %}
+{% block titulo %}Lista Pacientes{% endblock titulo %}
+
+{% block activo_nav %}
+
+<div class="sidebar-heading">
+    Listas
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'inicio' %}">
+    <i class="fas fa-calendar-check"></i>
+    <span>Lista Turnos</span></a>
+</li>
+        
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'lista_pacientes' %}">
+        <i class="fas fa-users"></i>
+        <span>Lista Pacientes</span></a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_medicos' %}">
+    <i class="fas fa-users"></i>
+    <span>Lista Médicos</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Nuevo
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_turno' %}">
+    <i class="fas fa-calendar-plus"></i>
+    <span>Nuevo Turno</span></a>                  
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_paciente' %}">
+        <i class="fas fa-user-plus"></i>
+        <span>Nuevo Paciente</span></a>
+</li>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_medico' %}">
+        <i class="fas fa-user-md"></i>
+        <span>Nuevo Médico</span></a>
+</li>
+{% endblock activo_nav%}
+
+{% block titulo_lista%}Pacientes{% endblock  %}
+
+{% block contenido %}
+
+{% if messages %}
+    {% for message in messages  %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+
+
+<div>
+    <table class="table">
+        <thead class="table-success">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Prepaga</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                
+                <td>{{paciente.nombre}}</td>
+                <td>{{paciente.apellido}}</td>
+                <td>{{paciente.email}}</td>
+                <td>{{paciente.prepaga}}</td>
+                {% comment %} <td><a href="detalle_paciente/{{paciente.id}}" type="button" class="btn btn-primary">Ver</a></td> {% endcomment %}
+                <td><a href="editar_paciente/{{paciente.id}}" type="button" class="btn btn-success"><i class="fa fa-pen"></i></td>
+                <td><a href="eliminar_paciente/{{paciente.id}}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>   
+    
+{% else %}
+
+<h1>Debe Loguearse para ver esta página</h1>
+
+{% endif %}
+
+{% endblock contenido %}

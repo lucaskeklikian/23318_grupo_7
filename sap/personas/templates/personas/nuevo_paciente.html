@@ -1,0 +1,94 @@
+{% extends 'base_personas.html' %}
+
+{% block titulo %}Nuevo Paciente{% endblock titulo %}
+{% block activo_nav %}
+
+<div class="sidebar-heading">
+    Listas
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'inicio' %}">
+    <i class="fas fa-calendar-check"></i>
+    <span>Lista Turnos</span></a>
+</li>
+        
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_pacientes' %}">
+        <i class="fas fa-users"></i>
+        <span>Lista Pacientes</span></a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_medicos' %}">
+    <i class="fas fa-users"></i>
+    <span>Lista Médicos</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Nuevo
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_turno' %}">
+    <i class="fas fa-calendar-plus"></i>
+    <span>Nuevo Turno</span></a>                  
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'nuevo_paciente' %}">
+        <i class="fas fa-user-plus"></i>
+        <span>Nuevo Paciente</span></a>
+</li>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_medico' %}">
+        <i class="fas fa-user-md"></i>
+        <span>Nuevo Médico</span></a>
+</li>
+{% endblock activo_nav%}
+
+{% block titulo_lista%}Nuevo Paciente{% endblock  %}
+
+{% block contenido %}
+
+{% if messages %}
+    {% for message in messages  %}
+        <div class="alert alert-warning alert-dismissible fade show mt-2"  role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+
+    <div>
+        <form method="POST">
+            
+            <div class="form-group row">{{formaPaciente}}</div>                           
+            <div class="d-inline-flex p-2">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+            </div> 
+            
+            {% csrf_token %}
+        
+        </form>
+    </div>
+
+{% else %}
+
+    <h1>Debe Loguearse para ver esta pagina</h1>
+
+{% endif %}
+{% endblock contenido %}    

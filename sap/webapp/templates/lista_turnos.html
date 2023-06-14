@@ -1,0 +1,130 @@
+{% extends 'base_webapp.html' %}
+{% block titulo %}Lista Turnos{% endblock titulo %}
+
+{% block activo_nav %}
+
+<div class="sidebar-heading">
+    Listas
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'inicio' %}">
+    <i class="fas fa-calendar-check"></i>
+    <span>Lista Turnos</span></a>
+</li>
+        
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_pacientes' %}">
+        <i class="fas fa-users"></i>
+        <span>Lista Pacientes</span></a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_medicos' %}">
+    <i class="fas fa-users"></i>
+    <span>Lista Médicos</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Nuevo
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_turno' %}">
+    <i class="fas fa-calendar-plus"></i>
+    <span>Nuevo Turno</span></a>                  
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_paciente' %}">
+        <i class="fas fa-user-plus"></i>
+        <span>Nuevo Paciente</span></a>
+</li>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_medico' %}">
+        <i class="fas fa-user-md"></i>
+        <span>Nuevo Médico</span></a>
+</li>
+{% endblock activo_nav%}
+
+{% block titulo_lista%}Sistema de Administración de Turnos{% endblock  %}
+
+{% block contenido %}
+
+{% if messages %}
+    {% for message in messages  %}
+        <div class="alert alert-warning alert-dismissible fade show" "d-inline-flex p-2" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+
+<h5>Cantidad de turnos: {{nro_turnos}}</h5>
+
+<div class='col'>
+    
+    <form method="GET">
+        {{ myFilter.form }}
+        
+        <div class="d-inline-flex p-2">
+            <button type="submit" class="btn btn-primary"></i>Buscar</button>
+        </div> 
+            
+    </form>
+    
+</div>
+
+
+<div>
+    <table class="table">
+        <thead class="table-success">
+            <tr>
+                <th>Paciente</th>
+                <th>Medico</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for turno in turnos %}
+            <tr>
+                
+                <td>{{turno.paciente}}</td>
+                <td>{{turno.medico}}</td>
+                <td>{{turno.fecha_y_hora|date:'d-m-Y'}}</td>
+                <td>{{turno.fecha_y_hora|time:'H:i'}}<span> hs</span></td>
+                <td><a href="detalle_turno/{{turno.id}}" type="button" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
+                <td><a href="editar_turno/{{turno.id}}" type="button" class="btn btn-success"><i class="fa fa-pen"></i></a></td>
+                <td><a href="eliminar_turno/{{turno.id}}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% else %}
+    
+    <h1>Debe Loguearse para ver esta página</h1>
+
+{% endif %}
+
+{% endblock contenido %}

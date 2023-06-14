@@ -1,0 +1,87 @@
+{% extends 'base_personas.html' %}
+
+{% block titulo %}Detalle Turno{% endblock titulo %}
+
+{% block activo_nav %}
+
+{% block titulo_lista%}Detalle Turno{% endblock  %}
+
+<div class="sidebar-heading">
+    Listas
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'inicio' %}">
+    <i class="fas fa-calendar-check"></i>
+    <span>Lista Turnos</span></a>
+</li>
+        
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_pacientes' %}">
+        <i class="fas fa-users"></i>
+        <span>Lista Pacientes</span></a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'lista_medicos' %}">
+    <i class="fas fa-users"></i>
+    <span>Lista Médicos</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Nuevo
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_turno' %}">
+    <i class="fas fa-calendar-plus"></i>
+    <span>Nuevo Turno</span></a>                  
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_paciente' %}">
+        <i class="fas fa-user-plus"></i>
+        <span>Nuevo Paciente</span></a>
+</li>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'nuevo_medico' %}">
+        <i class="fas fa-user-md"></i>
+        <span>Nuevo Médico</span></a>
+</li>
+{% endblock activo_nav%}
+
+{% block contenido %}
+
+{% if user.is_authenticated %}
+
+<div class="list-group">
+
+    <ul class="list-group list-group-light">
+        <li class="list-group-item px-3 border-0 rounded-3 list-group-item-success mb-2"><strong>Paciente:</strong> {{turno.paciente}}</li>
+        <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Médico:</strong> {{turno.medico}}</li>
+        <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Fecha:</strong> {{turno.fecha_y_hora|date:'d-m-Y'}}</li>
+        <li class="list-group-item px-3 border-0 rounded-3 list-group-item-primary mb-2"><strong>Hora:</strong> {{turno.fecha_y_hora|time:'H:i'}} hs</li>
+    </ul>
+
+</div>
+
+{% else %}
+
+    <h1>Debe Loguearse para ver esta página</h1>
+   
+
+{% endif %}   
+
+{% endblock contenido %}                        
+                   
