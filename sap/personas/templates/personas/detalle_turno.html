@@ -4,6 +4,8 @@
 
 {% block activo_nav %}
 
+{% block titulo_lista%}Detalle Turno{% endblock  %}
+
 <div class="sidebar-heading">
     Listas
 </div>
@@ -63,8 +65,6 @@
 
 {% if user.is_authenticated %}
 
-<h1>Detalle del Turno</h1>
-
 <div class="list-group">
 
     <ul class="list-group list-group-light">
@@ -79,7 +79,7 @@
 {% else %}
 
     <h1>Debe Loguearse para ver esta página</h1>
-    <div><a href="{% url 'login' %}">Login</a></div>
+   
 
 {% endif %}   
 

@@ -57,6 +57,9 @@
         <span>Nuevo Médico</span></a>
 </li>
 {% endblock activo_nav%}
+
+{% block titulo_lista%}Pacientes{% endblock  %}
+
 {% block contenido %}
 
 {% if messages %}
@@ -70,15 +73,6 @@
 
 {% if user.is_authenticated %}
 
-<div class="d-flex justify-content-center"><h1>Pacientes</h1></div>
-        
-{% if user.is_authenticated %}
-    <div><a href="{% url 'logout' %}">Logout</a></div>
-{% else %}
-
-        <div><a href="{% url 'login' %}">Login</a></div>
-
-{% endif %}
 
 <div>
     <table class="table">
@@ -109,11 +103,12 @@
         </tbody>
     </table>
 
-    
+</div>   
     
 {% else %}
+
 <h1>Debe Loguearse para ver esta página</h1>
-<div><a href="{% url 'login' %}">Login</a></div>
+
 {% endif %}
 
 {% endblock contenido %}

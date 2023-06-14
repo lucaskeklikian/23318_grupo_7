@@ -58,6 +58,8 @@
 </li>
 {% endblock activo_nav%}
 
+{% block titulo_lista%}Sistema de Administración de Turnos{% endblock  %}
+
 {% block contenido %}
 
 {% if messages %}
@@ -70,9 +72,22 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-    <h1>Sistema de Administración de Turnos</h1>
 
 <h5>Cantidad de turnos: {{nro_turnos}}</h5>
+
+<div class='col'>
+    
+    <form method="GET">
+        {{ myFilter.form }}
+        
+        <div class="d-inline-flex p-2">
+            <button type="submit" class="btn btn-primary"></i>Buscar</button>
+        </div> 
+            
+    </form>
+    
+</div>
+
 
 <div>
     <table class="table">
@@ -107,8 +122,9 @@
 </div>
 
 {% else %}
+    
     <h1>Debe Loguearse para ver esta página</h1>
-    <div><a href="{% url 'login' %}">Login</a></div>
+
 {% endif %}
 
 {% endblock contenido %}

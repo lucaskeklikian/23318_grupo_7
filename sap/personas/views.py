@@ -55,7 +55,7 @@ def nuevoPaciente(request):
         if formaPaciente.is_valid:
             try:
                 formaPaciente.save()
-                return redirect('inicio')
+                return redirect('lista_pacientes')
             except:
                 messages.success(request,("Revise el formulario"))
     else: # es GET

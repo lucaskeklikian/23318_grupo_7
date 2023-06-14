@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from webapp.views import lista_turnos, calendarView, lista_pacientes, lista_medicos
 from personas.views import detalleTurno, nuevoTurno, nuevoPaciente, nuevoMedico, editarTurno, editarPaciente, editarMedico, eliminarTurno, eliminarPaciente, eliminarMedico
-
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +36,7 @@ urlpatterns = [
     path('eliminar_turno/<int:id>', eliminarTurno),
     path('eliminar_paciente/<int:id>', eliminarPaciente),
     path('eliminar_medico/<int:id>', eliminarMedico),
-    path('calendar/', calendarView.as_view(),name='calendar'),
+    path('calendar/', login_required(calendarView.as_view()),name='calendar'),
     path('members/', include('django.contrib.auth.urls')),
     path('', include('members.urls'))
 ]

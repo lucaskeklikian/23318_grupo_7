@@ -11,7 +11,11 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('inicio')
+            nxt = request.GET.get("next", None)
+            if nxt is None:
+                return redirect('inicio')
+            else:
+                return redirect(nxt)
         else:
             messages.success(request,("Hubo un error de logueo prueba nuevamente!"))
             return redirect('login')

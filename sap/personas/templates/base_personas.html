@@ -96,7 +96,8 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <div><h1>{% block titulo_lista%}{% endblock  %}</h1></div>
+                    {% comment %} <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -107,12 +108,12 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> {% endcomment %}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        {% comment %} <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -251,9 +252,9 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
-                        </li>
+                        </li>{% endcomment %}
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <div class="topbar-divider d-none d-sm-block"></div> 
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -311,6 +312,7 @@
                     </div>                          
                     {% comment %} ---------------------------------------BLOQUE CONTENIDO---------------------------------------------------- {% endcomment %} 
                     <!-- Content Row -->
+                    {% comment %}
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
@@ -396,7 +398,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Content Row -->
 
                     <div class="row">
@@ -626,7 +627,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div>{% endcomment %}
 
                 </div>
                 <!-- /.container-fluid -->
@@ -638,7 +639,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; TurnosWeb 2023</span>
                     </div>
                 </div>
             </footer>
