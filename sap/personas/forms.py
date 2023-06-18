@@ -65,16 +65,17 @@ class PacienteForm(forms.ModelForm):
     apellido = forms.CharField(
         label="Apellido",
         max_length=100,
+        validators=(solo_caracteres,),
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
     email = forms.EmailField(
         label="Email",
         max_length=100,
-        required=False,
+        required=True,
         validators=(validate_email,),
         error_messages={"required": "Por favor completa el campo"},
-        widget=forms.TextInput(attrs={"class": "form-control", "type": "email"}),
+        widget=forms.TextInput(attrs={"class": "form-control"})#, "type": "email"}),
     )
 
     prepaga = forms.ChoiceField(
