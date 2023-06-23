@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 class Medico(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
     matricula = models.IntegerField(verbose_name="matricula")
     
     def __str__(self):
@@ -15,7 +15,7 @@ class Medico(models.Model):
 class Paciente(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
     prepaga = models.CharField(max_length=255)
 
     def __str__(self):
