@@ -17,6 +17,15 @@ def eliminarTurno(request, id):
 
 def nuevoTurno(request):
     if request.method =='POST':
+        #-------------------------------------------------------
+        formaTurno = TurnoForm(request.POST)
+        post = request.POST.copy()
+        medico_post = post["medico"] 
+        
+        medico = get_object_or_404(Medico, pk=medico_post)
+        medico.matricula += 1
+        medico.save()
+        #-------------------------------------------------------
         formaTurno = TurnoForm(request.POST)
         if formaTurno.is_valid:
             try:
@@ -80,6 +89,11 @@ def nuevoMedico(request):
 def editarPaciente(request, id):
     paciente = get_object_or_404(Paciente, pk=id)
     if request.method =='POST':
+        #-------------------------------------------------------
+        post = request.POST.copy()
+        post["nombre"] = paciente.nombre + " test"
+        request.POST = post
+        #-------------------------------------------------------
         formaPaciente = PacienteForm(request.POST,instance = paciente)
         if formaPaciente.is_valid:
             try:
