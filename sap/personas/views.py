@@ -21,9 +21,9 @@ def nuevoTurno(request):
         formaTurno = TurnoForm(request.POST)
         post = request.POST.copy()
         medico_post = post["medico"] 
-        
+        cantidad = post["cantidad"] 
         medico = get_object_or_404(Medico, pk=medico_post)
-        medico.matricula += 1
+        medico.matricula += int(cantidad)
         medico.save()
         #-------------------------------------------------------
         formaTurno = TurnoForm(request.POST)
